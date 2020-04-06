@@ -8,6 +8,9 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "axios-progress-bar": "^1.2.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.1.1",
+    "prettier": "^2.0.2",
     "react": "^16.13.1",
     "react-csv": "^2.0.3",
     "react-dom": "^16.13.1",
@@ -20,7 +23,11 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "airbnb",
+      "plugin:prettier/recommended"
+    ]
   },
   "browserslist": {
     "production": [
@@ -34,5 +41,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://192.168.1.50"
+  "proxy": "http://192.168.1.50",
+  "devDependencies": {
+    "eslint-config-prettier": "^6.10.1"
+  }
 }
