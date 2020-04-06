@@ -3,13 +3,14 @@ import * as Utils from './utilities/utilities';
 import { CSVLink } from 'react-csv';
 import { loadProgressBar } from 'axios-progress-bar';
 import 'axios-progress-bar/dist/nprogress.css';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ProductList from './components/ProductList';
 
 class App extends React.Component {
     state = {
         products: {},
         csvData: [],
+        date: {},
     };
 
     getAllProducts = () => {
@@ -32,16 +33,29 @@ class App extends React.Component {
 
     componentDidMount() {
         loadProgressBar();
-        this.getAllProducts();
+        //this.getAllProducts();
+        const date = Utils.getDate();
+        this.setState({ date: date });
     }
+
     render() {
         return (
             <div className="App">
+                <button className="btn" onClick={() => this.getAllProducts()}>
+                    Load All Products
+                </button>
                 <ProductList
                     products={this.state.products}
                     addToCsv={this.addToCsv}
                 />
-                <CSVLink data={this.state.csvData}>Download me</CSVLink>
+                <CSVLink
+                    data={this.state.csvData}
+                    filename={`${this.state.date}-product-export.csv`}
+                    className="btn btn-primary"
+                    target="_blank"
+                >
+                    Download Product CSV
+                </CSVLink>
             </div>
         );
     }

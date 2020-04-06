@@ -1,11 +1,19 @@
 import React from 'react';
-
+import Table from 'react-bootstrap/Table';
 import Part from './Part';
 
 class ProductList extends React.Component {
     render() {
         return (
-            <ul>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Brand</th>
+                        <th>SKU</th>
+                        <th>Vehicles</th>
+                    </tr>
+                </thead>
                 {Object.keys(this.props.products).map((key) => (
                     <Part
                         key={key}
@@ -14,7 +22,7 @@ class ProductList extends React.Component {
                         id={key}
                     />
                 ))}
-            </ul>
+            </Table>
         );
     }
 }

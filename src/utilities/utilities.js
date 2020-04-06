@@ -27,3 +27,9 @@ export const getProducts = (url, products, resolve, reject) => {
             reject('Something wrong. Please refresh the page and try again.');
         });
 };
+
+export const getDate = () => {
+    const dt = new Date();
+    const date = `${dt.getMonth() + 1}-${dt.getDate()}-${dt.getFullYear()}`;
+    return date;
+};

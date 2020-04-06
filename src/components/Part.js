@@ -88,12 +88,16 @@ class Part extends React.Component {
         const partNumber = this.props.ProductInformation.PartNo;
 
         return (
-            <li>
-                {prodName},{brandName},{partNumber},
-                {Object.keys(this.state.vehicles).map((key) => (
-                    <span key={key}>{this.state.vehicles[key]}</span>
-                ))}
-            </li>
+            <tr>
+                <td>{prodName}</td>
+                <td>{brandName}</td>
+                <td>{partNumber}</td>
+                <td>
+                    {Object.keys(this.state.vehicles).map((key) => (
+                        <span key={key}>{this.state.vehicles[key]}</span>
+                    ))}
+                </td>
+            </tr>
         );
     }
 }
