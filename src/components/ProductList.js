@@ -8,20 +8,32 @@ class ProductList extends React.Component {
             <Table striped bordered hover>
                 <thead>
                     <tr>
+                        <th>Auto Plus ID</th>
                         <th>Product Name</th>
                         <th>Brand</th>
                         <th>SKU</th>
+                        <th>Cost</th>
+                        <th>Price</th>
+                        <th>Weight</th>
+                        <th>Shipping Class</th>
+                        <th>Height</th>
+                        <th>Length</th>
+                        <th>Width</th>
+                        <th>Image</th>
+                        <th>Category</th>
                         <th>Vehicles</th>
                     </tr>
                 </thead>
-                {Object.keys(this.props.products).map((key) => (
-                    <Part
-                        key={key}
-                        ProductInformation={this.props.products[key]}
-                        addToCsv={this.props.addToCsv}
-                        id={key}
-                    />
-                ))}
+                <tbody>
+                    {Object.keys(this.props.products).map((key) => (
+                        <Part
+                            key={key}
+                            ProductInformation={this.props.products[key]}
+                            addToCsv={this.props.addToCsv}
+                            id={key}
+                        />
+                    ))}
+                </tbody>
             </Table>
         );
     }

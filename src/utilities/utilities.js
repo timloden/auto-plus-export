@@ -13,10 +13,16 @@ export const getProducts = (url, products, resolve, reject) => {
             const retrievedProducts = products.concat(
                 response.data.InventoryItems
             );
-            const nextPage = `/api/inventory?batchsize=50&page=${
+            console.log(
+                `loaded page: ${response.data.CurrentPage} of ${response.data.TotalPages}`
+            );
+            const nextPage = `/api/inventory?mfgCode=GKWV&batchsize=50&page=${
                 response.data.CurrentPage + 1
             }`;
-            if (response.data.CurrentPage !== 1) {
+
+            //response.data.TotalPages
+
+            if (response.data.CurrentPage !== response.data.TotalPages) {
                 getProducts(nextPage, retrievedProducts, resolve, reject);
             } else {
                 resolve(retrievedProducts);

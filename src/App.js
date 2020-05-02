@@ -16,7 +16,7 @@ class App extends React.Component {
     getAllProducts = () => {
         new Promise((resolve, reject) => {
             Utils.getProducts(
-                '/api/inventory?batchsize=50&page=1',
+                '/api/inventory?mfgCode=GKWV&batchsize=50&page=1',
                 [],
                 resolve,
                 reject
