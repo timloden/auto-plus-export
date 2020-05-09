@@ -60,6 +60,60 @@ class Part extends React.Component {
         }
     };
 
+    getFitmentYears = (vehicleApplications) => {
+        if (vehicleApplications) {
+            const allVehicles = vehicleApplications.map(function (vehicle) {
+                let year = vehicle.YearID;
+                //let make = vehicle.MakeName;
+                //let model = vehicle.ModelName;
+
+                //let ymm = `${year} ${make} ${model}`;
+                return year;
+            });
+
+            let vehicleYearString = allVehicles.toString();
+            return vehicleYearString;
+        } else {
+            return;
+        }
+    };
+
+    getFitmentMake = (vehicleApplications) => {
+        if (vehicleApplications) {
+            const allVehicles = vehicleApplications.map(function (vehicle) {
+                //let year = vehicle.YearID;
+                let make = vehicle.MakeName;
+                //let model = vehicle.ModelName;
+
+                //let ymm = `${year} ${make} ${model}`;
+                return make;
+            });
+
+            let vehicleMakeString = allVehicles.toString();
+            return vehicleMakeString;
+        } else {
+            return;
+        }
+    };
+
+    getFitmentModel = (vehicleApplications) => {
+        if (vehicleApplications) {
+            const allVehicles = vehicleApplications.map(function (vehicle) {
+                //let year = vehicle.YearID;
+                //let make = vehicle.MakeName;
+                let model = vehicle.ModelName;
+
+                //let ymm = `${year} ${make} ${model}`;
+                return model;
+            });
+
+            let vehicleModelString = allVehicles.toString();
+            return vehicleModelString;
+        } else {
+            return;
+        }
+    };
+
     getCategories = (vehicleApplications) => {
         if (vehicleApplications) {
             const vehicle = vehicleApplications[0];
@@ -67,7 +121,7 @@ class Part extends React.Component {
             return category;
         }
 
-        return 'none';
+        return 'Universal';
     };
 
     imageCheck = (imageUrl) => {
@@ -120,10 +174,18 @@ class Part extends React.Component {
             const vehicles = this.getVehicles(vehicleArray);
             const category = this.getCategories(vehicleArray);
             const price = this.getPrice(cost, vehicleArray);
+            const description = `Since 1984, Dynacorn International LLC has been supplying ${prodName} and classic muscle car enthusiast with quality sheet metal, bright trim and molding for restorations or for just plain making a ride look its best. Dynacorn Products are licensed by OEM, GM, Ford, and Chrysler`;
+
+            const fitmentYears = this.getFitmentYears(vehicleArray);
+            const fitmentMake = this.getFitmentMake(vehicleArray);
+            const fitmentModel = this.getFitmentModel(vehicleArray);
+
+            console.log(fitmentModel);
 
             const csvData = {
                 autoPlusId: autoPlusId,
                 prodName: prodName,
+                description: description,
                 brand: brandName,
                 sku: partNumber,
                 cost: cost,
@@ -136,6 +198,9 @@ class Part extends React.Component {
                 image: imageUrl,
                 category: category,
                 vehicles: vehicles,
+                fitmentYears: fitmentYears,
+                fitmentMake: fitmentMake,
+                fitmentModel: fitmentModel,
             };
 
             this.setState(csvData);
@@ -152,6 +217,7 @@ class Part extends React.Component {
                     <tr>
                         <td>{this.state.autoPlusId}</td>
                         <td>{this.state.prodName}</td>
+                        <td>{this.state.description}</td>
                         <td>{this.state.brand}</td>
                         <td>{this.state.sku}</td>
                         <td>{this.state.cost}</td>
@@ -164,6 +230,9 @@ class Part extends React.Component {
                         <td>{this.state.image}</td>
                         <td>{this.state.category}</td>
                         <td>{this.state.vehicles}</td>
+                        <td>{this.state.fitmentYears}</td>
+                        <td>{this.state.fitmentMake}</td>
+                        <td>{this.state.fitmentModel}</td>
                     </tr>
                 )}
             </Fragment>

@@ -22,7 +22,7 @@ export const getProducts = (url, products, resolve, reject) => {
 
             //response.data.TotalPages
 
-            if (response.data.CurrentPage !== response.data.TotalPages) {
+            if (response.data.CurrentPage !== 1) {
                 getProducts(nextPage, retrievedProducts, resolve, reject);
             } else {
                 resolve(retrievedProducts);

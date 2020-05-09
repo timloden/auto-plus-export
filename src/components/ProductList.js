@@ -10,6 +10,7 @@ class ProductList extends React.Component {
                     <tr>
                         <th>Auto Plus ID</th>
                         <th>Product Name</th>
+                        <th>Description</th>
                         <th>Brand</th>
                         <th>SKU</th>
                         <th>Cost</th>
@@ -22,6 +23,9 @@ class ProductList extends React.Component {
                         <th>Image</th>
                         <th>Category</th>
                         <th>Vehicles</th>
+                        <th>Years</th>
+                        <th>Makes</th>
+                        <th>Models</th>
                     </tr>
                 </thead>
                 <tbody>
