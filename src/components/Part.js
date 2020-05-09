@@ -60,55 +60,19 @@ class Part extends React.Component {
         }
     };
 
-    getFitmentYears = (vehicleApplications) => {
+    getFitment = (vehicleApplications) => {
         if (vehicleApplications) {
             const allVehicles = vehicleApplications.map(function (vehicle) {
                 let year = vehicle.YearID;
-                //let make = vehicle.MakeName;
-                //let model = vehicle.ModelName;
+                let make = vehicle.MakeName;
+                let model = vehicle.ModelName;
 
-                //let ymm = `${year} ${make} ${model}`;
-                return year;
+                let ymm = `${year} ${make} ${model}`;
+                return ymm;
             });
 
             let vehicleYearString = allVehicles.toString();
             return vehicleYearString;
-        } else {
-            return;
-        }
-    };
-
-    getFitmentMake = (vehicleApplications) => {
-        if (vehicleApplications) {
-            const allVehicles = vehicleApplications.map(function (vehicle) {
-                //let year = vehicle.YearID;
-                let make = vehicle.MakeName;
-                //let model = vehicle.ModelName;
-
-                //let ymm = `${year} ${make} ${model}`;
-                return make;
-            });
-
-            let vehicleMakeString = allVehicles.toString();
-            return vehicleMakeString;
-        } else {
-            return;
-        }
-    };
-
-    getFitmentModel = (vehicleApplications) => {
-        if (vehicleApplications) {
-            const allVehicles = vehicleApplications.map(function (vehicle) {
-                //let year = vehicle.YearID;
-                //let make = vehicle.MakeName;
-                let model = vehicle.ModelName;
-
-                //let ymm = `${year} ${make} ${model}`;
-                return model;
-            });
-
-            let vehicleModelString = allVehicles.toString();
-            return vehicleModelString;
         } else {
             return;
         }
@@ -179,11 +143,7 @@ class Part extends React.Component {
             const price = this.getPrice(cost, vehicleArray);
             const description = `Since 1984, Dynacorn International LLC has been supplying ${prodName} and classic muscle car enthusiast with quality sheet metal, bright trim and molding for restorations or for just plain making a ride look its best. Dynacorn Products are licensed by OEM, GM, Ford, and Chrysler`;
 
-            const fitmentYears = this.getFitmentYears(vehicleArray);
-            const fitmentMake = this.getFitmentMake(vehicleArray);
-            const fitmentModel = this.getFitmentModel(vehicleArray);
-
-            console.log(fitmentModel);
+            const fitment = this.getFitment(vehicleArray);
 
             const csvData = {
                 autoPlusId: autoPlusId,
@@ -201,9 +161,7 @@ class Part extends React.Component {
                 image: imageUrl,
                 category: category,
                 vehicles: vehicles,
-                fitmentYears: fitmentYears,
-                fitmentMake: fitmentMake,
-                fitmentModel: fitmentModel,
+                fitment: fitment,
             };
 
             this.setState(csvData);
@@ -233,9 +191,7 @@ class Part extends React.Component {
                         <td>{this.state.image}</td>
                         <td>{this.state.category}</td>
                         <td>{this.state.vehicles}</td>
-                        <td>{this.state.fitmentYears}</td>
-                        <td>{this.state.fitmentMake}</td>
-                        <td>{this.state.fitmentModel}</td>
+                        <td>{this.state.fitment}</td>
                     </tr>
                 )}
             </Fragment>

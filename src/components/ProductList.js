@@ -23,9 +23,7 @@ class ProductList extends React.Component {
                         <th>Image</th>
                         <th>Category</th>
                         <th>Vehicles</th>
-                        <th>Years</th>
-                        <th>Makes</th>
-                        <th>Models</th>
+                        <th>Fitment</th>
                     </tr>
                 </thead>
                 <tbody>
