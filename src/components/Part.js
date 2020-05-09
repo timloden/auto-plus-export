@@ -150,7 +150,10 @@ class Part extends React.Component {
 
             const id = this.props.id;
             const autoPlusId = this.props.ProductInformation.InventoryID;
-            const prodName = this.props.ProductInformation.MfgLabel;
+            const prodName = this.props.ProductInformation.MfgLabel.replace(
+                /[^\w\s\-/]/gi,
+                ''
+            );
             const brandName = this.props.ProductInformation.BrandName;
             const partNumber = this.props.ProductInformation.PartNo;
             const cost = this.props.ProductInformation.Cost;
